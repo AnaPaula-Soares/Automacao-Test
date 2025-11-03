@@ -119,7 +119,7 @@ Screenshots são armazenadas em cypress/screenshots/.
 8. Autor
 Paula
 Gerente de Área QA | Especialista em Testes Manuais e Automatizados | DevSecOps
-📧 contato: seuemail@exemplo.com
+
 
 9. Tags
 #Cypress #AutomacaoDeTestes #QA #QualityAssurance #DevSecOps #JavaScript #Faker #TestesE2E #WebTesting #AutomacaoWeb #GitHub
