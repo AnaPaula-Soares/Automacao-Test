@@ -1,125 +1,125 @@
-# Automação de Formulário e Login com Cypress e Faker
+# 🧪 Automação de Testes E2E com Cypress - Projeto Automacao-Test
 
-Este projeto contém scripts de automação desenvolvidos em **Cypress** para validar os fluxos de **cadastro de usuário** e **login** em uma aplicação web.  
-Os testes utilizam a biblioteca **@faker-js/faker** para geração dinâmica de dados e seguem boas práticas de automação e validação de interface.
+## 🎯 Visão Geral do Projeto
 
----
+Este projeto é um portfólio de automação de testes End-to-End (E2E) desenvolvido com **Cypress**, focado em validar os fluxos de **Cadastro de Usuário** e **Login** em uma aplicação web. O projeto demonstra a aplicação de boas práticas de desenvolvimento de testes, incluindo o uso do padrão **Page Object Model (POM)** e a geração de dados dinâmicos com o **Faker.js**.
 
-## 1. Objetivo
+O objetivo é apresentar um conjunto de testes robustos que garantem a funcionalidade e a qualidade da interface do usuário, além de servir como um *showcase* de habilidades em automação de testes web.
 
-Automatizar os principais fluxos funcionais de cadastro e autenticação, garantindo:
-- Validação de campos obrigatórios e restrições de dados.
-- Comportamento correto da interface e mensagens de retorno.
-- Registro de evidências por meio de screenshots.
-- Execução integrada em pipelines de CI/CD.
+## 🛠️ Tecnologias e Ferramentas Utilizadas
 
----
+| Tecnologia/Ferramenta | Versão | Descrição |
+| :--- | :--- | :--- |
+| **Cypress** | `^14.0.1` | Framework de testes E2E moderno e rápido. |
+| **@faker-js/faker** | `^10.1.0` | Biblioteca para geração de dados de teste dinâmicos e realistas. |
+| **JavaScript** | ES6+ | Linguagem de programação principal para escrita dos testes. |
+| **Node.js** | - | Ambiente de execução para o Cypress e gerenciamento de pacotes. |
+| **Page Object Model (POM)** | - | Padrão de design para organização e manutenção do código de teste. |
 
-## 2. Estrutura do Projeto
+## ⚙️ Estrutura do Projeto
 
-cypress/
-├── e2e/
-│ ├── formulario.cy.js # Automação do formulário de cadastro
-│ ├── login.cy.js # Automação do login
-│
-├── fixtures/
-│ └── tela.png # Imagem utilizada para upload no formulário
-│
-└── support/
-└── commands.js # Comandos auxiliares (opcional)
+A organização do projeto segue a convenção do Cypress, com a adição de uma camada de abstração para o Page Object Model, garantindo modularidade e fácil manutenção:
 
-yaml
-Copy code
+```
+automacao-test-project/
+├── cypress/
+│   ├── e2e/             # Arquivos de especificação dos testes (Test Specs)
+│   │   ├── formulario.cy.js     # Teste de fluxo de Cadastro
+│   │   └── login.cy.js          # Teste de fluxo de Login
+│   ├── fixtures/        # Dados estáticos externos (ex: massas de teste, arquivos de upload)
+│   │   └── tela.png
+│   ├── pages/           # Implementação do Page Object Model (POM)
+│   │   ├── formulario.js        # Page Object para o Formulário de Cadastro
+│   │   └── login.js             # Page Object para a Tela de Login
+│   └── support/         # Comandos customizados e configurações globais
+│       ├── commands.js
+│       └── e2e.js
+├── node_modules/        # Dependências do projeto
+├── package.json         # Metadados e scripts do projeto
+└── README_PORTFOLIO.md  # Este arquivo
+```
 
----
+## 💡 Destaques da Automação e Boas Práticas
 
-## 3. Tecnologias Utilizadas
+O projeto incorpora diversas boas práticas de automação, conforme identificado na análise do código:
 
-- **Cypress** – Framework de testes end-to-end.  
-- **Node.js** – Ambiente de execução.  
-- **@faker-js/faker** – Geração dinâmica de dados (nomes, e-mails, etc).  
-- **JavaScript (ES6)** – Linguagem de implementação.
+| Boa Prática | Descrição | Benefício |
+| :--- | :--- | :--- |
+| **Page Object Model (POM)** | Abstração da interface do usuário em classes dedicadas (`formulario.js`, `login.js`). | Alta manutenibilidade e código de teste limpo e legível. |
+| **Geração de Dados Dinâmicos** | Uso do `@faker-js/faker` para preencher formulários. | Testes mais robustos, evitando dependência de dados estáticos e colisões. |
+| **Simulação de Interação Humana** | Uso de `.type()` com *delays* para simular digitação humana. | Maior fidelidade ao comportamento real do usuário e prevenção de falhas por sincronização. |
+| **Validação de Evidências** | Geração de *screenshots* automáticas em caso de sucesso ou falha. | Prova de execução e facilidade na análise de *bugs*. |
+| **Sanitização de Dados** | Aplicação de `.normalize()` para remover acentuação e caracteres especiais. | Aumento da cobertura de testes e tratamento de dados não-ASCII. |
 
-### Instalação e Execução
+## 🚀 Como Executar o Projeto
+
+Siga os passos abaixo para configurar e executar os testes em sua máquina local.
+
+### Pré-requisitos
+
+Certifique-se de ter o **Node.js** instalado em sua máquina.
+
+### Instalação
+
+1.  Clone o repositório:
+    ```bash
+    git clone https://github.com/AnaPaula-Soares/Automacao-Test.git
+    cd Automacao-Test
+    ```
+
+2.  Instale as dependências do projeto:
+    ```bash
+    npm install
+    ```
+
+### Execução dos Testes
+
+O Cypress oferece duas formas principais de execução: via interface gráfica (Test Runner) e via linha de comando (Headless).
+
+#### 1. Execução via Test Runner (Interface Gráfica)
+
+Este método é ideal para desenvolvimento e *debugging*.
 
 ```bash
-# Clonar o repositório
-git clone https://github.com/seuusuario/nome-do-repositorio.git
+npm run cypress:open
+```
 
-# Acessar o diretório
-cd nome-do-repositorio
+Ao executar o comando, o Test Runner do Cypress será aberto. Selecione os arquivos `formulario.cy.js` e `login.cy.js` para iniciar a execução interativa.
 
-# Instalar dependências
-npm install
+#### 2. Execução via Linha de Comando (Headless)
 
-# Executar o Cypress
-npx cypress open
-4. Formulário de Cadastro (formulario.cy.js)
-Fluxo automatizado de preenchimento e submissão do formulário de cadastro.
+Este método é recomendado para integração contínua (CI) e execução rápida.
 
-Campos Validados
-Campo	Tipo	Validação
-Nome Completo	Texto	Obrigatório, até 255 caracteres
-E-mail	Texto	Obrigatório, formato válido
-Senha	Texto	Obrigatório
-Confirmação de Senha	Texto	Igual à senha
-Data de Nascimento	Data	Obrigatório
-Gênero	Radio	Obrigatório
-Telefone	Texto	Padrão (XX) XXXXX-XXXX
-País	Select	Obrigatório
-Estado	Select	Exibido se país = Brasil
-Foto de Perfil	Upload	Formato PNG/JPG até 2MB
-Termos de Uso	Checkbox	Obrigatório
+O script padrão de execução via linha de comando pode ser adicionado ao `package.json` para facilitar:
 
-Validações Executadas
-Exibição do título “Cadastro de Usuário”.
+```json
+"scripts": {
+  "cypress:run": "cypress run"
+}
+```
 
-Preenchimento dinâmico de dados válidos.
+Com o script acima, você pode executar:
 
-Upload de arquivo com sucesso.
+```bash
+npm run cypress:run
+```
 
-Exibição da mensagem final: “Cadastro realizado com sucesso!”.
+## 📈 Resultados e Artefatos
 
-Geração de screenshot (formulario-cadastrado-com-sucesso.png).
+Após a execução dos testes, o Cypress gera artefatos importantes para análise:
 
-5. Login (login.cy.js)
-Fluxo automatizado de autenticação de usuário.
+*   **Screenshots:** Capturas de tela são salvas automaticamente em `cypress/screenshots/` em caso de falha no teste.
+*   **Vídeos:** Um vídeo da execução de cada especificação de teste é gravado por padrão e salvo em `cypress/videos/`.
 
-Etapas Validadas
-Inserção de e-mail e senha válidos.
+## 🧑‍💻 Autor
 
-Acesso via botão “Acessar”.
+**Ana Paula Soares**
 
-Mensagem final: “Login realizado com sucesso! Redirecionando...”.
-
-Captura de evidência (formulario-acessado-com-sucesso.png).
-
-6. Boas Práticas Aplicadas
-Sanitização de strings com .normalize() para remover acentuação e caracteres inválidos.
-
-Uso de delays simulando digitação humana nos campos .type().
-
-Validação de visibilidade e conteúdo textual antes de interagir com elementos.
-
-Screenshots automáticas para evidência de sucesso.
-
-Tempo de espera controlado (cy.wait()) apenas quando necessário.
-
-7. Resultados Esperados
-Ao executar os testes:
-
-O formulário é preenchido corretamente com dados válidos.
-
-O sistema confirma o cadastro e exibe mensagem de sucesso.
-
-O login é realizado e a mensagem de redirecionamento é exibida.
-
-Screenshots são armazenadas em cypress/screenshots/.
-
-8. Autor
-Paula
-Gerente de Área QA | Especialista em Testes Manuais e Automatizados | DevSecOps
+GitHub https://github.com/AnaPaula-Soares 
+LinkedIn (https://www.linkedin.com/in/anapaulacostasoares/
+---
+*Este README foi gerado para fins de portfólio, destacando as boas práticas de automação de testes e a robustez dos cenários implementados.*
 
 
-9. Tags
-#Cypress #AutomacaoDeTestes #QA #QualityAssurance #DevSecOps #JavaScript #Faker #TestesE2E #WebTesting #AutomacaoWeb #GitHub
+ao vivo
+
