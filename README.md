@@ -115,8 +115,10 @@ Após a execução dos testes, o Cypress gera artefatos importantes para anális
 
 **Ana Paula Soares**
 
-GitHub https://github.com/AnaPaula-Soares 
-LinkedIn (https://www.linkedin.com/in/anapaulacostasoares/
+**GitHub https://github.com/AnaPaula-Soares 
+
+
+**LinkedIn (https://www.linkedin.com/in/anapaulacostasoares/
 ---
 *Este README foi gerado para fins de portfólio, destacando as boas práticas de automação de testes e a robustez dos cenários implementados.*
 
